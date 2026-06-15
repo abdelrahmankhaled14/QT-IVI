@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/technology.png</file>
+        <file>assets/wifi.png</file>
+        <file>assets/fan(1).png</file>
+        <file>assets/cloud.png</file>
+        <file>assets/youtube.png</file>
+        <file>assets/rewind-button.png</file>
+        <file>assets/play-button-arrowhead.png</file>
+        <file>assets/pause.png</file>
+        <file>assets/air-conditioner.png</file>
+        <file>assets/next-button.png</file>
+        <file>assets/settings.png</file>
+        <file>assets/maps-and-flags(1).png</file>
+        <file>html/map.html</file>
+        <file>assets/old_rusty_car.glb</file>
+        <file>assets/Old_rusty_car.qml</file>
+        <file>assets/windy.png</file>
+        <file>assets/temperature.png</file>
+        <file>assets/sun.png</file>
+        <file>assets/storm.png</file>
+        <file>assets/snowy.png</file>
+        <file>assets/refresh.png</file>
+        <file>assets/partly-cloudy.png</file>
+        <file>assets/humidity.png</file>
+        <file>assets/cloud(1).png</file>
+        <file>assets/rainy-day.png</file>
+        <file>assets/spotify.png</file>
+        <file>assets/phone.png</file>
+        <file>assets/carseat.jpg</file>
+        <file>assets/sedancar.jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,39 @@
+<RCC>
+  <qresource prefix="/qt/qml/IVIAutomotive/">
+    <file alias="Main.qml">/home/abdo/IVIAutomotive/Main.qml</file>
+    <file alias="qml/weather/weather.qml">/home/abdo/IVIAutomotive/qml/weather/weather.qml</file>
+    <file alias="qml/HVAC/HVAC.qml">/home/abdo/IVIAutomotive/qml/HVAC/HVAC.qml</file>
+    <file alias="qml/applauncher/Applauncher.qml">/home/abdo/IVIAutomotive/qml/applauncher/Applauncher.qml</file>
+    <file alias="qml/youtube/Youtube.qml">/home/abdo/IVIAutomotive/qml/youtube/Youtube.qml</file>
+    <file alias="qml/navigation/Navi.qml">/home/abdo/IVIAutomotive/qml/navigation/Navi.qml</file>
+    <file alias="qml/weather/MainScreen.qml">/home/abdo/IVIAutomotive/qml/weather/MainScreen.qml</file>
+    <file alias="qml/weather/SplashScreen.qml">/home/abdo/IVIAutomotive/qml/weather/SplashScreen.qml</file>
+    <file alias="AppTheme.qml">/home/abdo/IVIAutomotive/AppTheme.qml</file>
+    <file alias="qml/spotify/Spotify.qml">/home/abdo/IVIAutomotive/qml/spotify/Spotify.qml</file>
+    <file alias="qml/settings/qml/pages/ThemePage.qml">/home/abdo/IVIAutomotive/qml/settings/qml/pages/ThemePage.qml</file>
+    <file alias="qml/settings/qml/pages/VolumePage.qml">/home/abdo/IVIAutomotive/qml/settings/qml/pages/VolumePage.qml</file>
+    <file alias="qml/settings/qml/pages/WifiPage.qml">/home/abdo/IVIAutomotive/qml/settings/qml/pages/WifiPage.qml</file>
+    <file alias="qml/settings/qml/pages/BluetoothPage.qml">/home/abdo/IVIAutomotive/qml/settings/qml/pages/BluetoothPage.qml</file>
+    <file alias="qml/settings/qml/components/PageHeader.qml">/home/abdo/IVIAutomotive/qml/settings/qml/components/PageHeader.qml</file>
+    <file alias="qml/settings/qml/components/SettingsGroup.qml">/home/abdo/IVIAutomotive/qml/settings/qml/components/SettingsGroup.qml</file>
+    <file alias="qml/settings/qml/components/SettingsRow.qml">/home/abdo/IVIAutomotive/qml/settings/qml/components/SettingsRow.qml</file>
+    <file alias="qml/settings/qml/components/StyledSlider.qml">/home/abdo/IVIAutomotive/qml/settings/qml/components/StyledSlider.qml</file>
+    <file alias="qml/settings/qml/components/StyledToggle.qml">/home/abdo/IVIAutomotive/qml/settings/qml/components/StyledToggle.qml</file>
+    <file alias="qml/settings/qml/sidebar/Sidebar.qml">/home/abdo/IVIAutomotive/qml/settings/qml/sidebar/Sidebar.qml</file>
+    <file alias="qml/settings/qml/sidebar/SidebarItem.qml">/home/abdo/IVIAutomotive/qml/settings/qml/sidebar/SidebarItem.qml</file>
+    <file alias="qml/settings/settings.qml">/home/abdo/IVIAutomotive/qml/settings/settings.qml</file>
+    <file alias="qml/media/AudioPage.qml">/home/abdo/IVIAutomotive/qml/media/AudioPage.qml</file>
+    <file alias="qml/media/RadioPage.qml">/home/abdo/IVIAutomotive/qml/media/RadioPage.qml</file>
+    <file alias="qml/media/VideoPage.qml">/home/abdo/IVIAutomotive/qml/media/VideoPage.qml</file>
+    <file alias="qml/media/Media.qml">/home/abdo/IVIAutomotive/qml/media/Media.qml</file>
+    <file alias="qml/phone/phone.qml">/home/abdo/IVIAutomotive/qml/phone/phone.qml</file>
+    <file alias="qml/navigation/NaviState.qml">/home/abdo/IVIAutomotive/qml/navigation/NaviState.qml</file>
+    <file alias="qml/HVAC/HVACState.qml">/home/abdo/IVIAutomotive/qml/HVAC/HVACState.qml</file>
+    <file alias="qml/media/MediaState.qml">/home/abdo/IVIAutomotive/qml/media/MediaState.qml</file>
+    <file alias="qml/weather/DetailCard.qml">/home/abdo/IVIAutomotive/qml/weather/DetailCard.qml</file>
+    <file alias="qml/applauncher/DashCard.qml">/home/abdo/IVIAutomotive/qml/applauncher/DashCard.qml</file>
+    <file alias="qml/applauncher/VehiclePage.qml">/home/abdo/IVIAutomotive/qml/applauncher/VehiclePage.qml</file>
+    <file alias="qml/applauncher/SeatHeatPage.qml">/home/abdo/IVIAutomotive/qml/applauncher/SeatHeatPage.qml</file>
+  </qresource>
+</RCC>
+

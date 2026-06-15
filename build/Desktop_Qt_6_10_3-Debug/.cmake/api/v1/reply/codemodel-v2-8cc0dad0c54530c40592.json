@@ -1,0 +1,205 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-6192320bbcb51f3cb8ec.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "IVIAutomotive",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-cf8e67cf4e4f4ab17a2a.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-342ee802d883ef883d18.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-d603e1c292388d455cda.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-21a6d7605af187ff022b.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-497cb3b4effd8ddf64dc.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive-Debug-96b58b20052335a3e6b2.json",
+					"name" : "appIVIAutomotive",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_autogen-Debug-4c46aec150caab0d9a36.json",
+					"name" : "appIVIAutomotive_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_autogen_timestamp_deps-Debug-4e3a8320b6deaad6a7d5.json",
+					"name" : "appIVIAutomotive_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_copy_qml-Debug-ba25d3668e6e6d7d3353.json",
+					"name" : "appIVIAutomotive_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_copy_res-Debug-4887b5f9500eec0e408a.json",
+					"name" : "appIVIAutomotive_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_qmlimportscan-Debug-0adeed002b9a22ca7c28.json",
+					"name" : "appIVIAutomotive_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_qmllint-Debug-29856c79cae7580e2138.json",
+					"name" : "appIVIAutomotive_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_qmllint_json-Debug-1ddf6f8d3cd5401a9413.json",
+					"name" : "appIVIAutomotive_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_qmllint_module-Debug-a945085279965e602875.json",
+					"name" : "appIVIAutomotive_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appIVIAutomotive_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appIVIAutomotive_qmltyperegistration-Debug-ab052c2f1d806e3ecc18.json",
+					"name" : "appIVIAutomotive_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-generate_qmlls_build_ini_file-Debug-6359cdb7398cae97b3c9.json",
+					"name" : "generate_qmlls_build_ini_file",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_appIVIAutomotive_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_appIVIAutomotive_aotstats_target-Debug-005717e5d7c1d90a6b1b.json",
+					"name" : "module_appIVIAutomotive_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug",
+		"source" : "/home/abdo/IVIAutomotive"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

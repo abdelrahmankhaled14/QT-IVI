@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_appIVIAutomotive_FILE /home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/appIVIAutomotive)
+set(__QT_DEPLOY_TARGET_appIVIAutomotive_TYPE EXECUTABLE)

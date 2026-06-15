@@ -1,0 +1,36 @@
+module IVIAutomotive
+typeinfo appIVIAutomotive.qmltypes
+prefer :/qt/qml/IVIAutomotive/
+Main 254.0 Main.qml
+HVAC 254.0 qml/HVAC/HVAC.qml
+Applauncher 254.0 qml/applauncher/Applauncher.qml
+Youtube 254.0 qml/youtube/Youtube.qml
+Navi 254.0 qml/navigation/Navi.qml
+MainScreen 254.0 qml/weather/MainScreen.qml
+SplashScreen 254.0 qml/weather/SplashScreen.qml
+AppTheme 254.0 AppTheme.qml
+Spotify 254.0 qml/spotify/Spotify.qml
+ThemePage 254.0 qml/settings/qml/pages/ThemePage.qml
+VolumePage 254.0 qml/settings/qml/pages/VolumePage.qml
+WifiPage 254.0 qml/settings/qml/pages/WifiPage.qml
+BluetoothPage 254.0 qml/settings/qml/pages/BluetoothPage.qml
+PageHeader 254.0 qml/settings/qml/components/PageHeader.qml
+SettingsGroup 254.0 qml/settings/qml/components/SettingsGroup.qml
+SettingsRow 254.0 qml/settings/qml/components/SettingsRow.qml
+StyledSlider 254.0 qml/settings/qml/components/StyledSlider.qml
+StyledToggle 254.0 qml/settings/qml/components/StyledToggle.qml
+Sidebar 254.0 qml/settings/qml/sidebar/Sidebar.qml
+SidebarItem 254.0 qml/settings/qml/sidebar/SidebarItem.qml
+AudioPage 254.0 qml/media/AudioPage.qml
+RadioPage 254.0 qml/media/RadioPage.qml
+VideoPage 254.0 qml/media/VideoPage.qml
+Media 254.0 qml/media/Media.qml
+NaviState 254.0 qml/navigation/NaviState.qml
+HVACState 254.0 qml/HVAC/HVACState.qml
+MediaState 254.0 qml/media/MediaState.qml
+DetailCard 254.0 qml/weather/DetailCard.qml
+DashCard 254.0 qml/applauncher/DashCard.qml
+VehiclePage 254.0 qml/applauncher/VehiclePage.qml
+SeatHeatPage 254.0 qml/applauncher/SeatHeatPage.qml
+depends QtQuick
+

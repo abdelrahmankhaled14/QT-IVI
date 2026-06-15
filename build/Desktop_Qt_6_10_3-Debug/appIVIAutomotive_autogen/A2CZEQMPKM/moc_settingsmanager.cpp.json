@@ -1,0 +1,48 @@
+{
+    "classes": [
+        {
+            "className": "SettingsManager",
+            "lineNumber": 30,
+            "object": true,
+            "properties": [
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 36,
+                    "name": "wifi",
+                    "read": "wifi",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "WifiManager*",
+                    "user": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 40,
+                    "name": "sound",
+                    "read": "sound",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "SoundManager*",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "SettingsManager",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "settingsmanager.h",
+    "outputRevision": 69
+}

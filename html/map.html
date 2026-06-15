@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigation</title>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<!-- Leaflet Routing Machine CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #050a12;
+    font-family: monospace;
+    overflow: hidden;
+  }
+
+  #map {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Search panel */
+  #searchPanel {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(580px, calc(100vw - 40px));
+    background: rgba(10, 22, 37, 0.95);
+    border: 1px solid #1a3a55;
+    border-radius: 14px;
+    padding: 14px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .input-row:last-child { margin-bottom: 0; }
+
+  .label {
+    min-width: 52px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  .label-from { background: #0d1e30; color: #00aaff; }
+  .label-to   { background: #1a0d0d; color: #ff4455; }
+
+  .search-wrapper {
+    flex: 1;
+    position: relative;
+  }
+
+  .search-input {
+    width: 100%;
+    height: 40px;
+    background: #080f1a;
+    border: 1px solid #1a3a55;
+    border-radius: 8px;
+    color: #d0e8ff;
+    font-family: monospace;
+    font-size: 13px;
+    padding: 0 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-input:focus {
+    border-color: #00aaff;
+    background: #0d1e30;
+  }
+
+  .search-input::placeholder { color: #2a5070; }
+
+  /* Autocomplete dropdown */
+  .autocomplete-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #0a1625;
+    border: 1px solid #1a3a55;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 2000;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .autocomplete-list.visible { display: block; }
+
+  .autocomplete-item {
+    padding: 10px 14px;
+    color: #88bbdd;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #0d1e30;
+    transition: background 0.1s;
+  }
+
+  .autocomplete-item:hover { background: #1a3a55; color: #d0e8ff; }
+  .autocomplete-item:last-child { border-bottom: none; }
+
+  /* GO Button */
+  #goBtn {
+    width: 54px;
+    height: 40px;
+    background: #0055aa;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  #goBtn:hover { background: #0077cc; }
+  #goBtn:disabled { background: #0a2040; color: #2a5070; cursor: not-allowed; }
+
+  /* Clear button */
+  #clearBtn {
+    width: 54px;
+    height: 40px;
+    background: #0a1420;
+    border: 1px solid #552222;
+    border-radius: 8px;
+    color: #aa4444;
+    font-family: monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  #clearBtn:hover { background: #2a0f0f; }
+
+  /* Route info panel at bottom */
+  #routeInfo {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 72px;
+    background: rgba(8, 18, 30, 0.95);
+    border-top: 1px solid #1a2d40;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  #routeInfo.visible { display: flex; }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #2a5070;
+  }
+
+  .info-value {
+    font-size: 22px;
+    color: #d0e8ff;
+    font-weight: 300;
+  }
+
+  .info-value.blue { color: #00aaff; }
+
+  .divider {
+    width: 1px;
+    height: 36px;
+    background: #1a2d40;
+  }
+
+  /* Spinner */
+  #spinner {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 20, 32, 0.9);
+    border: 1px solid #1a3a55;
+    border-radius: 12px;
+    padding: 16px 28px;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    z-index: 2000;
+    color: #4488aa;
+    font-size: 13px;
+  }
+
+  #spinner.visible { display: flex; }
+
+  .spin-ring {
+    width: 20px; height: 20px;
+    border: 2px solid #1a3a55;
+    border-top-color: #00aaff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Toast */
+  #toast {
+    position: absolute;
+    bottom: 90px;
+    left: 50%; transform: translateX(-50%);
+    background: #0a1420;
+    border: 1px solid #1a3a55;
+    border-radius: 20px;
+    padding: 8px 20px;
+    color: #88bbdd;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 3000;
+    white-space: nowrap;
+  }
+
+  #toast.show { opacity: 1; }
+
+  /* Leaflet overrides for dark theme */
+  .leaflet-control-zoom a {
+    background: #0a1625 !important;
+    color: #00aaff !important;
+    border-color: #1a3a55 !important;
+  }
+
+  .leaflet-routing-container { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Search Panel -->
+<div id="searchPanel">
+  <div class="input-row">
+    <div class="label label-from">FROM</div>
+    <div class="search-wrapper">
+      <input id="fromInput" class="search-input" placeholder="Enter start location…" autocomplete="off"/>
+      <div id="fromSuggestions" class="autocomplete-list"></div>
+    </div>
+  </div>
+  <div class="input-row">
+    <div class="label label-to">TO</div>
+    <div class="search-wrapper">
+      <input id="toInput" class="search-input" placeholder="Enter destination…" autocomplete="off"/>
+      <div id="toSuggestions" class="autocomplete-list"></div>
+    </div>
+    <button id="goBtn">GO</button>
+    <button id="clearBtn">✕</button>
+  </div>
+</div>
+
+<!-- Loading spinner -->
+<div id="spinner">
+  <div class="spin-ring"></div>
+  Fetching route…
+</div>
+
+<!-- Route info -->
+<div id="routeInfo">
+  <div class="info-block">
+    <div class="info-label">DISTANCE</div>
+    <div class="info-value" id="distVal">—</div>
+  </div>
+  <div class="divider"></div>
+  <div class="info-block">
+    <div class="info-label">ETA</div>
+    <div class="info-value blue" id="etaVal">—</div>
+  </div>
+  <div class="divider"></div>
+  <div class="info-block">
+    <button id="clearBtn2" style="
+      background:#0a1420; border:1px solid #552222;
+      border-radius:8px; color:#aa4444;
+      font-family:monospace; font-size:11px;
+      padding:6px 14px; cursor:pointer;">
+      ✕ Clear
+    </button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+<script>
+// ── Map setup ─────────────────────────────────────────────────────────────────
+var map = L.map('map', {
+  center: [30.0444, 31.2357],
+  zoom: 10,
+  zoomControl: true
+});
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap',
+  maxZoom: 19
+}).addTo(map);
+
+// ── State ─────────────────────────────────────────────────────────────────────
+var fromCoord   = null;
+var toCoord     = null;
+var fromMarker  = null;
+var toMarker    = null;
+var routeCtrl   = null;
+var acTimers    = {};
+
+// ── Custom markers ────────────────────────────────────────────────────────────
+function makeIcon(color, label) {
+  return L.divIcon({
+    className: '',
+    html: '<div style="'
+      + 'background:' + color + ';'
+      + 'width:16px;height:16px;border-radius:50%;'
+      + 'border:3px solid white;'
+      + 'box-shadow:0 0 8px ' + color + ';'
+      + '"></div>',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8]
+  });
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2800);
+}
+
+// ── Format helpers ────────────────────────────────────────────────────────────
+function fmtDist(m) {
+  return m < 1000 ? Math.round(m) + ' m' : (m / 1000).toFixed(1) + ' km';
+}
+function fmtTime(s) {
+  var m = Math.floor(s / 60);
+  return m < 60 ? m + ' min' : Math.floor(m/60) + 'h ' + (m%60) + 'm';
+}
+
+// ── Autocomplete ──────────────────────────────────────────────────────────────
+function setupAutocomplete(inputId, listId, onSelect) {
+  var input = document.getElementById(inputId);
+  var list  = document.getElementById(listId);
+
+  input.addEventListener('input', function() {
+    var val = input.value.trim();
+    clearTimeout(acTimers[inputId]);
+
+    if (val.length < 3) {
+      list.classList.remove('visible');
+      list.innerHTML = '';
+      return;
+    }
+
+    // Debounce 350ms
+    acTimers[inputId] = setTimeout(function() {
+      fetch('https://nominatim.openstreetmap.org/search?q='
+        + encodeURIComponent(val)
+        + '&format=json&limit=5&addressdetails=1',
+        { headers: { 'User-Agent': 'NexusHMI/1.0', 'Accept-Language': 'en' } }
+      )
+      .then(function(r) { return r.json(); })
+      .then(function(results) {
+        list.innerHTML = '';
+        if (results.length === 0) {
+          list.classList.remove('visible');
+          return;
+        }
+
+        results.forEach(function(r) {
+          var item = document.createElement('div');
+          item.className = 'autocomplete-item';
+
+          // Short display: city, country
+          var name = r.display_name;
+          var parts = name.split(',');
+          var short = parts.slice(0, 3).join(',').trim();
+          item.textContent = short;
+          item.title = name;
+
+          item.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            input.value = short;
+            list.classList.remove('visible');
+            list.innerHTML = '';
+            onSelect(parseFloat(r.lat), parseFloat(r.lon), short);
+          });
+
+          list.appendChild(item);
+        });
+
+        list.classList.add('visible');
+      })
+      .catch(function() {
+        list.classList.remove('visible');
+      });
+    }, 350);
+  });
+
+  // Hide on blur
+  input.addEventListener('blur', function() {
+    setTimeout(function() {
+      list.classList.remove('visible');
+    }, 200);
+  });
+
+  // Enter key triggers go
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      list.classList.remove('visible');
+      doRoute();
+    }
+  });
+}
+
+// ── Setup autocomplete for both fields ────────────────────────────────────────
+setupAutocomplete('fromInput', 'fromSuggestions', function(lat, lon, name) {
+  fromCoord = [lat, lon];
+  if (fromMarker) map.removeLayer(fromMarker);
+  fromMarker = L.marker([lat, lon], { icon: makeIcon('#00aaff', 'FROM') })
+    .addTo(map)
+    .bindPopup('<b>FROM</b><br>' + name);
+  map.setView([lat, lon], 13);
+});
+
+setupAutocomplete('toInput', 'toSuggestions', function(lat, lon, name) {
+  toCoord = [lat, lon];
+  if (toMarker) map.removeLayer(toMarker);
+  toMarker = L.marker([lat, lon], { icon: makeIcon('#ff4455', 'TO') })
+    .addTo(map)
+    .bindPopup('<b>TO</b><br>' + name);
+});
+
+// ── Geocode a text address ────────────────────────────────────────────────────
+function geocodeText(text, onDone, onFail) {
+  fetch('https://nominatim.openstreetmap.org/search?q='
+    + encodeURIComponent(text)
+    + '&format=json&limit=1',
+    { headers: { 'User-Agent': 'NexusHMI/1.0' } }
+  )
+  .then(function(r) { return r.json(); })
+  .then(function(results) {
+    if (results.length > 0) {
+      onDone(parseFloat(results[0].lat), parseFloat(results[0].lon));
+    } else {
+      onFail('Location not found: ' + text);
+    }
+  })
+  .catch(function() { onFail('Network error'); });
+}
+
+// ── Route ─────────────────────────────────────────────────────────────────────
+function doRoute() {
+  var fromText = document.getElementById('fromInput').value.trim();
+  var toText   = document.getElementById('toInput').value.trim();
+
+  if (!fromText || !toText) {
+    showToast('Enter both From and To locations');
+    return;
+  }
+
+  document.getElementById('spinner').classList.add('visible');
+  document.getElementById('routeInfo').classList.remove('visible');
+
+  // If coords already selected via autocomplete, use them directly
+  // Otherwise geocode the text
+  var pending = 0;
+
+  function checkAndRoute() {
+    pending--;
+    if (pending === 0) drawRoute();
+  }
+
+  if (!fromCoord) {
+    pending++;
+    geocodeText(fromText, function(lat, lon) {
+      fromCoord = [lat, lon];
+      if (fromMarker) map.removeLayer(fromMarker);
+      fromMarker = L.marker([lat, lon], { icon: makeIcon('#00aaff', 'FROM') }).addTo(map);
+      checkAndRoute();
+    }, function(err) {
+      document.getElementById('spinner').classList.remove('visible');
+      showToast(err);
+    });
+  }
+
+  if (!toCoord) {
+    pending++;
+    geocodeText(toText, function(lat, lon) {
+      toCoord = [lat, lon];
+      if (toMarker) map.removeLayer(toMarker);
+      toMarker = L.marker([lat, lon], { icon: makeIcon('#ff4455', 'TO') }).addTo(map);
+      checkAndRoute();
+    }, function(err) {
+      document.getElementById('spinner').classList.remove('visible');
+      showToast(err);
+    });
+  }
+
+  // Both already set
+  if (fromCoord && toCoord && pending === 0) {
+    drawRoute();
+  }
+}
+
+function drawRoute() {
+  // Remove old route
+  if (routeCtrl) {
+    map.removeControl(routeCtrl);
+    routeCtrl = null;
+  }
+
+  // Use Leaflet Routing Machine with OSRM
+  routeCtrl = L.Routing.control({
+    waypoints: [
+      L.latLng(fromCoord[0], fromCoord[1]),
+      L.latLng(toCoord[0],   toCoord[1])
+    ],
+    routeWhileDragging: false,
+    addWaypoints: false,
+    fitSelectedRoutes: true,
+    show: false,
+    lineOptions: {
+      styles: [
+        { color: '#00aaff', weight: 5, opacity: 0.9 },
+        { color: '#ffffff', weight: 2, opacity: 0.3 }
+      ]
+    },
+    createMarker: function() { return null; } // We use our own markers
+  })
+  .on('routesfound', function(e) {
+    document.getElementById('spinner').classList.remove('visible');
+
+    var summary = e.routes[0].summary;
+    document.getElementById('distVal').textContent = fmtDist(summary.totalDistance);
+    document.getElementById('etaVal').textContent  = fmtTime(summary.totalTime);
+    document.getElementById('routeInfo').classList.add('visible');
+  })
+  .on('routingerror', function() {
+    document.getElementById('spinner').classList.remove('visible');
+    showToast('Could not find a route');
+  })
+  .addTo(map);
+}
+
+// ── Clear ─────────────────────────────────────────────────────────────────────
+function clearAll() {
+  if (fromMarker) { map.removeLayer(fromMarker); fromMarker = null; }
+  if (toMarker)   { map.removeLayer(toMarker);   toMarker   = null; }
+  if (routeCtrl)  { map.removeControl(routeCtrl); routeCtrl = null; }
+
+  fromCoord = null;
+  toCoord   = null;
+
+  document.getElementById('fromInput').value = '';
+  document.getElementById('toInput').value   = '';
+  document.getElementById('routeInfo').classList.remove('visible');
+}
+
+// ── Button events ─────────────────────────────────────────────────────────────
+document.getElementById('goBtn').addEventListener('click', doRoute);
+document.getElementById('clearBtn').addEventListener('click', clearAll);
+document.getElementById('clearBtn2').addEventListener('click', clearAll);
+
+</script>
+</body>
+</html>

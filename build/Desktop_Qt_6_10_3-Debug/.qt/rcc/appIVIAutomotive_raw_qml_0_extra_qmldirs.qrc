@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/qt/qml/IVIAutomotive/">
+    <file alias="qml/weather/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/weather/qmldir</file>
+    <file alias="qml/HVAC/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/HVAC/qmldir</file>
+    <file alias="qml/applauncher/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/applauncher/qmldir</file>
+    <file alias="qml/youtube/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/youtube/qmldir</file>
+    <file alias="qml/navigation/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/navigation/qmldir</file>
+    <file alias="qml/spotify/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/spotify/qmldir</file>
+    <file alias="qml/settings/qml/pages/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/settings/qml/pages/qmldir</file>
+    <file alias="qml/settings/qml/components/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/settings/qml/components/qmldir</file>
+    <file alias="qml/settings/qml/sidebar/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/settings/qml/sidebar/qmldir</file>
+    <file alias="qml/settings/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/settings/qmldir</file>
+    <file alias="qml/media/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/media/qmldir</file>
+    <file alias="qml/phone/qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qml/phone/qmldir</file>
+  </qresource>
+</RCC>
+

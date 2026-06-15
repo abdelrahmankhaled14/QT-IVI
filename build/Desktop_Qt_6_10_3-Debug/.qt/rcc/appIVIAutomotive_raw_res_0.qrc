@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/qt/qml/IVIAutomotive/">
+    <file alias="assets.qrc">/home/abdo/IVIAutomotive/assets.qrc</file>
+    <file alias="qml/navigation/qmldir">/home/abdo/IVIAutomotive/qml/navigation/qmldir</file>
+    <file alias="qml/HVAC/qmldir">/home/abdo/IVIAutomotive/qml/HVAC/qmldir</file>
+    <file alias="qml/media/qmldir">/home/abdo/IVIAutomotive/qml/media/qmldir</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,16 @@
+-rootPath
+/home/abdo/IVIAutomotive
+-cmake-output
+-output-file
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/.qt/qml_imports/appIVIAutomotive_conf.cmake
+-importPath
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug
+-importPath
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive
+-importPath
+/home/abdo/Qt/6.10.3/gcc_64/qml
+-qrcFiles
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/.qt/rcc/qmake_IVIAutomotive.qrc
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/.qt/rcc/appIVIAutomotive_raw_qml_0.qrc
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/.qt/rcc/appIVIAutomotive_raw_res_0.qrc
+/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/.qt/rcc/appIVIAutomotive_raw_qml_0_extra_qmldirs.qrc

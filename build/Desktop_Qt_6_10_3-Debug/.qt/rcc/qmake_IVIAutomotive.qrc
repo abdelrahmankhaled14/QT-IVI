@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/IVIAutomotive">
+    <file alias="qmldir">/home/abdo/IVIAutomotive/build/Desktop_Qt_6_10_3-Debug/IVIAutomotive/qmldir</file>
+  </qresource>
+</RCC>
+
